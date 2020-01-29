@@ -1,6 +1,7 @@
-import 'package:meta/meta.dart';
-
-@immutable
-abstract class BmiState {}
+class BmiResultState {
+  BmiResultState({this.bmi, this.weight, this.height});
   
-class InitialBmiState extends BmiState {}
+  final String bmi;
+  final double weight;
+  final double height;
+}

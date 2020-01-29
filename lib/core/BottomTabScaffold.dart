@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trex/core/AppTheme.dart';
 import 'package:trex/features/HomeScreen.dart';
 import 'package:trex/features/ProfileScreen.dart';
 import 'package:trex/features/bmi/bloc/BMIScreenBloc.dart';
+import 'package:trex/features/bmi/bloc/bloc/bloc.dart';
 import 'package:trex/features/bmi/setState/BMIScreenSetState.dart';
 
 class BottomTabScaffold extends StatelessWidget {
@@ -28,7 +30,10 @@ class BottomTabScaffold extends StatelessWidget {
 
   final List<Widget> screens = <Widget>[
     HomeScreen(),
-    BMIScreenBloc(),
+    BlocProvider<BmiBloc>(
+      create: (context) => BmiBloc(),
+      child: BMIScreenBloc(),
+    ),
     BMIScreenSetState(),
     ProfileScreen(),
   ];

@@ -14,16 +14,15 @@ class BMIScreenSetState extends StatefulWidget {
 }
 
 class _BMIScreenState extends State<BMIScreenSetState> {
-  int height = 180;
-  int weight = 60;
+  double height = 180;
+  double weight = 60;
   int bmi = 0;
 
   @override
   Widget build(BuildContext context) {
     Widget heightWidget = Expanded(
       child: ReusableCard(
-        colour: kActiveCardColour,
-        cardChild: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -60,7 +59,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
                 max: 220.0,
                 onChanged: (double newValue) {
                   setState(() {
-                    height = newValue.round();
+                    height = newValue.roundToDouble();
                   });
                 },
               ),
@@ -74,8 +73,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
         children: <Widget>[
           Expanded(
             child: ReusableCard(
-              colour: kActiveCardColour,
-              cardChild: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
@@ -114,7 +112,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
                       max: 300.0,
                       onChanged: (double newValue) {
                         setState(() {
-                          weight = newValue.round();
+                          weight = newValue.roundToDouble();
                         });
                       },
                     ),
@@ -129,8 +127,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
     
     Widget bmiWidget = Expanded(
       child: ReusableCard(
-        colour: kActiveCardColour,
-        cardChild: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(

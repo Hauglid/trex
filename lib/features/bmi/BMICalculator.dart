@@ -1,10 +1,12 @@
 import 'dart:math';
 
-class BMICalculator {
-  BMICalculator({this.height, this.weight});
+import 'package:flutter/foundation.dart';
 
-  final int height;
-  final int weight;
+class BMICalculator {
+  BMICalculator({@required this.height, this.weight});
+
+  final double height;
+  final double weight;
 
   double _bmi;
 

@@ -1,15 +1,24 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:trex/features/bmi/BMICalculator.dart';
 import './bloc.dart';
 
-class BmiBloc extends Bloc<BmiEvent, BmiState> {
+class BmiBloc extends Bloc<BmiEvent, BmiResultState> {
   @override
-  BmiState get initialState => InitialBmiState();
-
-  @override
-  Stream<BmiState> mapEventToState(
+  Stream<BmiResultState> mapEventToState(
     BmiEvent event,
   ) async* {
-    // TODO: Add Logic
+    if (event is UpdateBmiEvent) {
+      BMICalculator bmiCalculator =
+          BMICalculator(weight: event.weight, height: event.height);
+      String bmi = bmiCalculator.calculateBMI();
+
+      yield BmiResultState(
+          bmi: bmi, weight: event.weight, height: event.height);
+    }
   }
+
+  @override
+  BmiResultState get initialState =>
+      BmiResultState(bmi: '0', height: 100, weight: 40);
 }

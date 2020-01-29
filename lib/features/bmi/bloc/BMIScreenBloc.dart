@@ -1,29 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:trex/features/bmi/BMICalculator.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trex/features/bmi/bloc/bloc/bloc.dart';
 import 'package:trex/features/bmi/constants.dart';
 import 'package:trex/features/bmi/widgets/reusable_card.dart';
 
-enum Gender {
-  male,
-  female,
-}
-
-class BMIScreenBloc extends StatefulWidget {
-  @override
-  _BMIScreenState createState() => _BMIScreenState();
-}
-
-class _BMIScreenState extends State<BMIScreenBloc> {
-  int height = 180;
-  int weight = 60;
-  int bmi = 0;
-
+class BMIScreenBloc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //ignore: close_sinks
+    final BmiBloc bmiBloc = BlocProvider.of<BmiBloc>(context);
+
     Widget heightWidget = Expanded(
       child: ReusableCard(
-        colour: kActiveCardColour,
-        cardChild: Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
@@ -35,9 +24,13 @@ class _BMIScreenState extends State<BMIScreenBloc> {
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
               children: <Widget>[
-                Text(
-                  height.toString(),
-                  style: kNumberTextStyle,
+                BlocBuilder<BmiBloc, BmiResultState>(
+                  builder: (context, state) {
+                    return Text(
+                      state.height.toStringAsFixed(0),
+                      style: kNumberTextStyle,
+                    );
+                  },
                 ),
                 Text(
                   'cm',
@@ -54,14 +47,17 @@ class _BMIScreenState extends State<BMIScreenBloc> {
                 thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
                 overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
               ),
-              child: Slider(
-                value: height.toDouble(),
-                min: 120.0,
-                max: 220.0,
-                onChanged: (double newValue) {
-                  setState(() {
-                    height = newValue.round();
-                  });
+              child: BlocBuilder<BmiBloc, BmiResultState>(
+                builder: (context, state) {
+                  return Slider(
+                    value: state.height,
+                    min: 100,
+                    max: 220.0,
+                    onChanged: (newValue) {
+                      bmiBloc.add(UpdateBmiEvent(
+                          height: newValue, weight: state.weight));
+                    },
+                  );
                 },
               ),
             ),
@@ -69,13 +65,13 @@ class _BMIScreenState extends State<BMIScreenBloc> {
         ),
       ),
     );
+
     Widget weightWidget = Expanded(
       child: Row(
         children: <Widget>[
           Expanded(
             child: ReusableCard(
-              colour: kActiveCardColour,
-              cardChild: Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
@@ -87,9 +83,13 @@ class _BMIScreenState extends State<BMIScreenBloc> {
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
-                      Text(
-                        weight.toString(),
-                        style: kNumberTextStyle,
+                      BlocBuilder<BmiBloc, BmiResultState>(
+                        builder: (context, state) {
+                          return Text(
+                            state.weight.toStringAsFixed(0),
+                            style: kNumberTextStyle,
+                          );
+                        },
                       ),
                       Text(
                         'kg',
@@ -108,14 +108,17 @@ class _BMIScreenState extends State<BMIScreenBloc> {
                       overlayShape:
                           RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
-                    child: Slider(
-                      value: weight.toDouble(),
-                      min: 0.0,
-                      max: 300.0,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          weight = newValue.round();
-                        });
+                    child: BlocBuilder<BmiBloc, BmiResultState>(
+                      builder: (context, state) {
+                        return Slider(
+                          value: state.weight,
+                          min: 40,
+                          max: 300.0,
+                          onChanged: (newValue) {
+                            bmiBloc.add(UpdateBmiEvent(
+                                height: state.height, weight: newValue));
+                          },
+                        );
                       },
                     ),
                   ),
@@ -126,41 +129,45 @@ class _BMIScreenState extends State<BMIScreenBloc> {
         ],
       ),
     );
-    
-    Widget bmiWidget = Expanded(
-      child: ReusableCard(
-        colour: kActiveCardColour,
-        cardChild: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+
+    Widget bmiWidget = BlocBuilder<BmiBloc, BmiResultState>(
+      builder: (context, state) {
+        return Expanded(
+          child: ReusableCard(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'YOUR BMI',
+                  style: kLabelTextStyle,
+                ),
+                Text(
+                  state.bmi,
+                  style: kNumberTextStyle,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BMI CALCULATOR Bloc'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
-              'YOUR BMI',
-              style: kLabelTextStyle,
-            ),
-            Text(
-              BMICalculator(height: height, weight: weight).calculateBMI(),
-              style: kNumberTextStyle,
-            ),
+            heightWidget,
+            weightWidget,
+            bmiWidget,
           ],
         ),
       ),
     );
-
-    return Scaffold(
-        appBar: AppBar(
-          title: Text('BMI CALCULATOR Bloc'),
-        ),
-        body: Container(
-          padding: EdgeInsets.all(4),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              heightWidget,
-              weightWidget,
-              bmiWidget,
-            ],
-          ),
-        ));
   }
 }
