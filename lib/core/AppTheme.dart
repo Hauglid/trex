@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppTheme {
+mixin AppTheme {
   static Color red = Colors.red;
   static Color green = Colors.green;
   static Color blue = Colors.blue;
@@ -18,20 +18,4 @@ class AppTheme {
     primaryTextTheme: textTheme.copyWith(title: TextStyle(color: orange))
   );
 
-  // Not implemented completely from Flutter
-  // static const ColorScheme colorScheme = ColorScheme(
-  //   background: primaryBackground,
-  //   brightness: Brightness.dark,
-  //   error: blue,
-  //   onBackground: blue,
-  //   onError: blue,
-  //   onPrimary: blue,
-  //   onSecondary: blue,
-  //   onSurface: blue,
-  //   primary: blue,
-  //   primaryVariant: blue,
-  //   secondary: blue,
-  //   secondaryVariant: blue,
-  //   surface: blue,
-  // );
 }

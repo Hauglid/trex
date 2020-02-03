@@ -1,6 +1,12 @@
+import 'package:meta/meta.dart';
+
 class BmiResultState {
-  BmiResultState({this.bmi, this.weight, this.height});
-  
+  BmiResultState({
+    @required this.bmi,
+    @required this.weight,
+    @required this.height,
+  });
+
   final String bmi;
   final double weight;
   final double height;

@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:trex/core/AppTheme.dart';
 
-const kBottomContainerHeight = 80.0;
-const kActiveCardColour = Color(0xFF111328);
-const kInactiveCardColour = Color(0xFF1D1E33);
-const kBottomContainerColour = Color(0xFFEB1555);
+const double kBottomContainerHeight = 80.0;
+const Color kActiveCardColour = Color(0xFF111328);
+const Color kInactiveCardColour = Color(0xFF1D1E33);
+const Color kBottomContainerColour = Color(0xFFEB1555);
 
-var kLabelTextStyle = TextStyle(
+const TextStyle kLabelTextStyle = TextStyle(
   fontSize: 18.0,
 );
 
-var kNumberTextStyle = TextStyle(
+TextStyle kNumberTextStyle = TextStyle(
   fontSize: 50.0,
   color: AppTheme.orange,
   fontWeight: FontWeight.w900,
 );
 
-const kLargeButtonTextStyle = TextStyle(
+const TextStyle kLargeButtonTextStyle = TextStyle(
   fontSize: 25.0,
   fontWeight: FontWeight.bold,
 );
 
-const kTitleTextStyle = TextStyle(
+const TextStyle kTitleTextStyle = TextStyle(
   fontSize: 50.0,
   fontWeight: FontWeight.bold,
 );
 
-const kResultTextStyle = TextStyle(
+const TextStyle kResultTextStyle = TextStyle(
   color: Color(0xFF24D876),
   fontSize: 22.0,
   fontWeight: FontWeight.bold,
 );
 
-const kBodyTextStyle = TextStyle(
+const TextStyle kBodyTextStyle = TextStyle(
   fontSize: 22.0,
 );

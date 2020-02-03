@@ -7,7 +7,7 @@ class ExerciseScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Exercise Tab',
           ),
         ),
@@ -47,7 +47,7 @@ class NrkTekniskFeil extends StatelessWidget {
     return Transform.rotate(
       angle: 0.2,
       child: Container(
-        padding: EdgeInsets.only(top: 70, bottom: 70),
+        padding: const EdgeInsets.only(top: 70, bottom: 70),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

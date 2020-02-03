@@ -1,41 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trex/core/AppTheme.dart';
+import 'package:trex/features/ExerciseScreen.dart';
 import 'package:trex/features/HomeScreen.dart';
-import 'package:trex/features/ProfileScreen.dart';
-import 'package:trex/features/bmi/bloc/BMIScreenBloc.dart';
-import 'package:trex/features/bmi/bloc/bloc/bloc.dart';
-import 'package:trex/features/bmi/setState/BMIScreenSetState.dart';
 
 class BottomTabScaffold extends StatelessWidget {
   final List<BottomNavigationBarItem> tabItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),
-      title: Text('Home'),
+      title: const Text('Home'),
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.fitness_center),
-      title: Text('BMI Bloc'),
+      title: const  Text('BMI Bloc'),
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.fitness_center),
-      title: Text('BMI Set State'),
+      title: const  Text('BMI Set State'),
     ),
     BottomNavigationBarItem(
       icon: Icon(Icons.person),
-      title: Text('Profile'),
+      title: const  Text('Profile'),
     ),
   ];
 
   final List<Widget> screens = <Widget>[
     HomeScreen(),
-    BlocProvider<BmiBloc>(
-      create: (context) => BmiBloc(),
-      child: BMIScreenBloc(),
-    ),
-    BMIScreenSetState(),
-    ProfileScreen(),
+    ExerciseScreen(),
+    ExerciseScreen(),
+    // ProfileScreen(),
   ];
 
   @override

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:trex/features/bmi/constants.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({this.icon, this.label, this.color});
+  const IconContent({this.icon, this.label, this.color});
 
   final IconData icon;
   final String label;
-  final color;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class IconContent extends StatelessWidget {
           size: 80.0,
           color: color,
         ),
-        SizedBox(
+        const SizedBox(
           height: 15.0,
         ),
         Text(

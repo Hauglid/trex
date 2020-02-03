@@ -9,9 +9,9 @@ class BmiBloc extends Bloc<BmiEvent, BmiResultState> {
     BmiEvent event,
   ) async* {
     if (event is UpdateBmiEvent) {
-      BMICalculator bmiCalculator =
+      final BMICalculator bmiCalculator =
           BMICalculator(weight: event.weight, height: event.height);
-      String bmi = bmiCalculator.calculateBMI();
+      final String bmi = bmiCalculator.calculateBMI();
 
       yield BmiResultState(
           bmi: bmi, weight: event.weight, height: event.height);

@@ -20,7 +20,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
 
   @override
   Widget build(BuildContext context) {
-    Widget heightWidget = Expanded(
+    final Widget heightWidget = Expanded(
       child: ReusableCard(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,12 +46,14 @@ class _BMIScreenState extends State<BMIScreenSetState> {
             ),
             SliderTheme(
               data: SliderTheme.of(context).copyWith(
-                inactiveTrackColor: Color(0xFF8D8E98),
+                inactiveTrackColor: const Color(0xFF8D8E98),
                 activeTrackColor: Colors.white,
-                thumbColor: Color(0xFFEB1555),
-                overlayColor: Color(0x29EB1555),
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+                thumbColor: const Color(0xFFEB1555),
+                overlayColor: const Color(0x29EB1555),
+                thumbShape:
+                    const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                overlayShape:
+                    const RoundSliderOverlayShape(overlayRadius: 30.0),
               ),
               child: Slider(
                 value: height.toDouble(),
@@ -68,7 +70,7 @@ class _BMIScreenState extends State<BMIScreenSetState> {
         ),
       ),
     );
-    Widget weightWidget = Expanded(
+    final Widget weightWidget = Expanded(
       child: Row(
         children: <Widget>[
           Expanded(
@@ -97,14 +99,14 @@ class _BMIScreenState extends State<BMIScreenSetState> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Color(0xFF8D8E98),
+                      inactiveTrackColor: const Color(0xFF8D8E98),
                       activeTrackColor: Colors.white,
-                      thumbColor: Color(0xFFEB1555),
-                      overlayColor: Color(0x29EB1555),
+                      thumbColor: const Color(0xFFEB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: Slider(
                       value: weight.toDouble(),
@@ -124,8 +126,8 @@ class _BMIScreenState extends State<BMIScreenSetState> {
         ],
       ),
     );
-    
-    Widget bmiWidget = Expanded(
+
+    final Widget bmiWidget = Expanded(
       child: ReusableCard(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -145,10 +147,10 @@ class _BMIScreenState extends State<BMIScreenSetState> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('BMI CALCULATOR SET STATE'),
+          title: const Text('BMI CALCULATOR SET STATE'),
         ),
         body: Container(
-          padding: EdgeInsets.all(4),
+          padding: const EdgeInsets.all(4),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

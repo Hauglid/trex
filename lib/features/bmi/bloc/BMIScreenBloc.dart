@@ -10,7 +10,7 @@ class BMIScreenBloc extends StatelessWidget {
     //ignore: close_sinks
     final BmiBloc bmiBloc = BlocProvider.of<BmiBloc>(context);
 
-    Widget heightWidget = Expanded(
+    final Widget heightWidget = Expanded(
       child: ReusableCard(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +25,7 @@ class BMIScreenBloc extends StatelessWidget {
               textBaseline: TextBaseline.alphabetic,
               children: <Widget>[
                 BlocBuilder<BmiBloc, BmiResultState>(
-                  builder: (context, state) {
+                  builder: (BuildContext context, BmiResultState state) {
                     return Text(
                       state.height.toStringAsFixed(0),
                       style: kNumberTextStyle,
@@ -40,20 +40,20 @@ class BMIScreenBloc extends StatelessWidget {
             ),
             SliderTheme(
               data: SliderTheme.of(context).copyWith(
-                inactiveTrackColor: Color(0xFF8D8E98),
+                inactiveTrackColor: const Color(0xFF8D8E98),
                 activeTrackColor: Colors.white,
-                thumbColor: Color(0xFFEB1555),
-                overlayColor: Color(0x29EB1555),
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+                thumbColor: const Color(0xFFEB1555),
+                overlayColor: const Color(0x29EB1555),
+                thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                overlayShape: const RoundSliderOverlayShape(overlayRadius: 30.0),
               ),
               child: BlocBuilder<BmiBloc, BmiResultState>(
-                builder: (context, state) {
+                builder: (BuildContext context, BmiResultState state) {
                   return Slider(
                     value: state.height,
                     min: 100,
                     max: 220.0,
-                    onChanged: (newValue) {
+                    onChanged: (double newValue) {
                       bmiBloc.add(UpdateBmiEvent(
                           height: newValue, weight: state.weight));
                     },
@@ -66,7 +66,7 @@ class BMIScreenBloc extends StatelessWidget {
       ),
     );
 
-    Widget weightWidget = Expanded(
+    final Widget weightWidget = Expanded(
       child: Row(
         children: <Widget>[
           Expanded(
@@ -84,7 +84,7 @@ class BMIScreenBloc extends StatelessWidget {
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       BlocBuilder<BmiBloc, BmiResultState>(
-                        builder: (context, state) {
+                        builder: (BuildContext context, BmiResultState state) {
                           return Text(
                             state.weight.toStringAsFixed(0),
                             style: kNumberTextStyle,
@@ -99,22 +99,22 @@ class BMIScreenBloc extends StatelessWidget {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
-                      inactiveTrackColor: Color(0xFF8D8E98),
+                      inactiveTrackColor: const Color(0xFF8D8E98),
                       activeTrackColor: Colors.white,
-                      thumbColor: Color(0xFFEB1555),
-                      overlayColor: Color(0x29EB1555),
+                      thumbColor: const Color(0xFFEB1555),
+                      overlayColor: const Color(0x29EB1555),
                       thumbShape:
-                          RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          const RoundSliderThumbShape(enabledThumbRadius: 15.0),
                       overlayShape:
-                          RoundSliderOverlayShape(overlayRadius: 30.0),
+                          const RoundSliderOverlayShape(overlayRadius: 30.0),
                     ),
                     child: BlocBuilder<BmiBloc, BmiResultState>(
-                      builder: (context, state) {
+                      builder: (BuildContext context, BmiResultState state) {
                         return Slider(
                           value: state.weight,
                           min: 40,
                           max: 300.0,
-                          onChanged: (newValue) {
+                          onChanged: (double newValue) {
                             bmiBloc.add(UpdateBmiEvent(
                                 height: state.height, weight: newValue));
                           },
@@ -130,8 +130,8 @@ class BMIScreenBloc extends StatelessWidget {
       ),
     );
 
-    Widget bmiWidget = BlocBuilder<BmiBloc, BmiResultState>(
-      builder: (context, state) {
+    final Widget bmiWidget = BlocBuilder<BmiBloc, BmiResultState>(
+      builder: (BuildContext context, BmiResultState state) {
         return Expanded(
           child: ReusableCard(
             child: Column(
@@ -154,10 +154,10 @@ class BMIScreenBloc extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR Bloc'),
+        title: const Text('BMI CALCULATOR Bloc'),
       ),
       body: Container(
-        padding: EdgeInsets.all(4),
+        padding: const EdgeInsets.all(4),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -8,7 +8,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Home Tab',
         ),
         elevation: 0,
@@ -23,11 +23,11 @@ class HomeScreen extends StatelessWidget {
               ReusableCard(
                 child: Center(
                   child: FlatButton(
-                    padding: EdgeInsets.all(24),
+                    padding: const EdgeInsets.all(24),
                     onPressed: () {
                       AppRouter.push(context, Routes.mock);
                     },
-                    child: Text('Go to mock screen'),
+                    child: const Text('Go to mock screen'),
                   ),
                 ),
               ),

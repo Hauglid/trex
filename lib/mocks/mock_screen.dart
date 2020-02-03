@@ -8,7 +8,7 @@ class MockScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('This is Mock'),
+        title: const Text('This is Mock'),
         centerTitle: true,
       ),
       body: Center(
@@ -18,21 +18,21 @@ class MockScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Back'),
+              child: const Text('Back'),
+            ),
+            OutlineButton(
+              onPressed: () {
+                Navigator.of(context).push<dynamic>(
+                    CupertinoPageRoute<dynamic>(builder: (BuildContext context) => MockScreen()));
+              },
+              child: const Text('go deeper'),
             ),
             OutlineButton(
               onPressed: () {
                 Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (context) => MockScreen()));
+                    CupertinoPageRoute<dynamic>(builder: (BuildContext context) => MockScreen2()));
               },
-              child: Text('go deeper'),
-            ),
-            OutlineButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    CupertinoPageRoute(builder: (context) => MockScreen2()));
-              },
-              child: Text('go to end'),
+              child: const Text('go to end'),
             ),
           ],
         ),

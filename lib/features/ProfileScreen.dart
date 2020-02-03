@@ -1,42 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trex/core/authentication_bloc/authentication_bloc.dart';
+import 'package:trex/core/authentication_bloc/authentication_event.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final List<Color> colors = <Color>[
-    Colors.pink[400],
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.lightBlue,
-    Colors.indigo,
-    Colors.purple,
-  ];
+  const ProfileScreen({Key key, @required this.name}) : super(key: key);
+
+  final String name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Profile Tab',
-        ),
+        title: const Text('Home'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () {
+              BlocProvider.of<AuthenticationBloc>(context).add(
+                LoggedOut(),
+              );
+            },
+          )
+        ],
       ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(8),
-        itemCount: 8,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            padding: const EdgeInsets.all(8),
-            height: 50,
-            transform: Matrix4.rotationZ(0.1),
-            child: Container(
-              color: colors[index],
-              child: Center(
-                child: Text('Index $index'),
-              ),
-            ),
-          );
-        },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Center(child: Text('Welcome $name!')),
+        ],
       ),
     );
   }

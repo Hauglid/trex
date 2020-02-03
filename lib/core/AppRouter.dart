@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trex/features/ExerciseScreen.dart';
-import 'package:trex/features/HomeScreen.dart';
-import 'package:trex/features/ProfileScreen.dart';
 import 'package:trex/mocks/mock_screen.dart';
 import 'package:trex/mocks/mock_screen2.dart';
 
-class AppRouter {
+mixin AppRouter {
   static const String initialRoute = Routes.homeScreen;
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -16,18 +13,6 @@ class AppRouter {
   static Route<dynamic> routes(RouteSettings settings) {
     switch (settings.name) {
       // Screen to boot the app.
-      case Routes.homeScreen:
-        return MaterialPageRoute<Widget>(
-            builder: (_) => HomeScreen(), settings: settings);
-
-      case Routes.exerciseScreen:
-        return MaterialPageRoute<Widget>(
-            builder: (_) => ExerciseScreen(), settings: settings);
-
-      case Routes.profileScreen:
-        return MaterialPageRoute<Widget>(
-            builder: (_) => ProfileScreen(), settings: settings);
-
       case Routes.mock:
         return MaterialPageRoute<Widget>(
             builder: (_) => MockScreen(), settings: settings);
