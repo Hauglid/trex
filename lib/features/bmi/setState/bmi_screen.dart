@@ -8,12 +8,12 @@ enum Gender {
   female,
 }
 
-class BMIScreenSetState extends StatefulWidget {
+class BMIScreen extends StatefulWidget {
   @override
   _BMIScreenState createState() => _BMIScreenState();
 }
 
-class _BMIScreenState extends State<BMIScreenSetState> {
+class _BMIScreenState extends State<BMIScreen> {
   double height = 180;
   double weight = 60;
   int bmi = 0;
