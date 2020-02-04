@@ -1,36 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trex/core/app_theme.dart';
 import 'package:trex/features/exercise_screen.dart';
 import 'package:trex/features/home_screen.dart';
 import 'package:trex/features/profile_screen.dart';
 
-import 'app_theme.dart';
+class MyTabItem {
+  MyTabItem({this.barItem, this.screen});
+  BottomNavigationBarItem barItem;
+  Widget screen;
+}
 
 class AppBottomTab extends StatelessWidget {
-  final List<BottomNavigationBarItem> tabItems = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      title: const Text('Home'),
+  final List<MyTabItem> tabItems = <MyTabItem>[
+    MyTabItem(
+      barItem: BottomNavigationBarItem(
+        icon: Icon(Icons.home),
+        title: const Text('Home'),
+      ),
+      screen: HomeScreen(),
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.fitness_center),
-      title: const  Text('BMI Bloc'),
+    MyTabItem(
+      barItem: BottomNavigationBarItem(
+        icon: Icon(Icons.fitness_center),
+        title: const Text('Exercise'),
+      ),
+      screen: ExerciseScreen(),
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.fitness_center),
-      title: const  Text('BMI Set State'),
+    MyTabItem(
+        barItem: BottomNavigationBarItem(
+          icon: Icon(Icons.fitness_center),
+          title: const Text('BMI et State'),
+        ),
+        screen: ExerciseScreen()),
+    MyTabItem(
+      barItem: BottomNavigationBarItem(
+        icon: Icon(Icons.person),
+        title: const Text('Profile'),
+      ),
+      screen: ProfileScreen(),
     ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person),
-      title: const  Text('Profile'),
-    ),
-  ];
-
-  final List<Widget> screens = <Widget>[
-    HomeScreen(),
-    ExerciseScreen(),
-    ExerciseScreen(),
-    ProfileScreen(),
   ];
 
   @override
@@ -39,16 +48,14 @@ class AppBottomTab extends StatelessWidget {
       tabBar: CupertinoTabBar(
         backgroundColor: AppTheme.shared.canvasColor,
         activeColor: AppTheme.shared.accentColor,
-        items: tabItems,
+        items: tabItems.map((MyTabItem tabItem) => tabItem.barItem).toList(),
       ),
       tabBuilder: (BuildContext context, int index) {
-        // assert(index >= 0 && index <= 2);
         return CupertinoTabView(
           builder: (BuildContext context) {
-            return screens[index];
+            return tabItems[index].screen;
           },
         );
-        // screens[index];
       },
     );
   }
