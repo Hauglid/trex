@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 import 'package:trex/core/authentication_bloc/bloc.dart';
 import 'package:trex/repository/user_repository.dart';
@@ -33,7 +34,7 @@ class AuthenticationBloc
     try {
       final bool isSignedIn = await _userRepository.isSignedIn();
       if (isSignedIn) {
-        final String name = await _userRepository.getUser();
+        final FirebaseUser name = await _userRepository.getUser();
         yield Authenticated(name);
       } else {
         yield Unauthenticated();

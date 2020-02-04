@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trex/core/authentication_bloc/authentication_bloc.dart';
@@ -12,19 +11,19 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  _ProfileScreenState() {
-    
-  }
+  // _ProfileScreenState() {
 
-  FirebaseUser user;
+  // }
 
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  // FirebaseUser user;
+
+  // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Profile'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.exit_to_app),
@@ -43,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: BlocBuilder<AuthenticationBloc, AuthenticationState>(
               builder: (BuildContext context, AuthenticationState state) {
                 if (state is Authenticated) {
-                  return Text('You are ${state.displayName}');
+                  return Text('You are ${state.user.displayName}');
                 }
                 return const Text('Something is wrong');
               },
