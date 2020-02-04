@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trex/core/AppRouter.dart';
+import 'package:trex/core/app_router.dart';
 import 'package:trex/features/bmi/widgets/reusable_card.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trex/core/AppTheme.dart';
-import 'package:trex/features/ExerciseScreen.dart';
-import 'package:trex/features/HomeScreen.dart';
+import 'package:trex/features/exercise_screen.dart';
+import 'package:trex/features/home_screen.dart';
+import 'package:trex/features/profile_screen.dart';
 
-import '../features/ProfileScreen.dart';
+import 'app_theme.dart';
 
-class BottomTabScaffold extends StatelessWidget {
+class AppBottomTab extends StatelessWidget {
   final List<BottomNavigationBarItem> tabItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
       icon: Icon(Icons.home),

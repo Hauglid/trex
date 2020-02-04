@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trex/core/AppTheme.dart';
+import 'package:trex/core/app_theme.dart';
 
 class ReusableCard extends StatelessWidget {
   const ReusableCard({this.child, this.onPress});

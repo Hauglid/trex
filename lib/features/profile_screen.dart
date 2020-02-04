@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trex/core/authentication_bloc/authentication_bloc.dart';
@@ -5,7 +6,20 @@ import 'package:trex/core/authentication_bloc/authentication_event.dart';
 
 import '../core/authentication_bloc/bloc.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  _ProfileScreenState() {
+    
+  }
+
+  FirebaseUser user;
+
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

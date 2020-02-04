@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:trex/core/AppTheme.dart';
+import 'package:trex/core/app_theme.dart';
 
 class ExerciseScreen extends StatelessWidget {
   @override

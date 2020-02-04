@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trex/core/AppTheme.dart';
+import 'package:trex/core/app_theme.dart';
 
 const double kBottomContainerHeight = 80.0;
 const Color kActiveCardColour = Color(0xFF111328);
