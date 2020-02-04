@@ -2,10 +2,10 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trex/core/simple_bloc_delegate.dart';
-import 'package:trex/features/ProfileScreen.dart';
 import 'package:trex/repository/user_repository.dart';
 
 import 'core/AppTheme.dart';
+import 'core/BottomTabScaffold.dart';
 import 'core/authentication_bloc/bloc.dart';
 import 'core/login/login_screen.dart';
 import 'core/splash_screen.dart';
@@ -50,7 +50,7 @@ class App extends StatelessWidget {
             return SplashScreen();
           }
           if (state is Authenticated) {
-            return ProfileScreen(name: state.displayName);
+            return BottomTabScaffold();
           }
           if (state is Unauthenticated) {
             return LoginScreen(userRepository: _userRepository);

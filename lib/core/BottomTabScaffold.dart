@@ -4,6 +4,8 @@ import 'package:trex/core/AppTheme.dart';
 import 'package:trex/features/ExerciseScreen.dart';
 import 'package:trex/features/HomeScreen.dart';
 
+import '../features/ProfileScreen.dart';
+
 class BottomTabScaffold extends StatelessWidget {
   final List<BottomNavigationBarItem> tabItems = <BottomNavigationBarItem>[
     BottomNavigationBarItem(
@@ -28,7 +30,7 @@ class BottomTabScaffold extends StatelessWidget {
     HomeScreen(),
     ExerciseScreen(),
     ExerciseScreen(),
-    // ProfileScreen(),
+    ProfileScreen(),
   ];
 
   @override
@@ -40,7 +42,7 @@ class BottomTabScaffold extends StatelessWidget {
         items: tabItems,
       ),
       tabBuilder: (BuildContext context, int index) {
-        assert(index >= 0 && index <= 2);
+        // assert(index >= 0 && index <= 2);
         return CupertinoTabView(
           builder: (BuildContext context) {
             return screens[index];
