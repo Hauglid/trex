@@ -4,6 +4,8 @@ import 'package:trex/core/app_theme.dart';
 import 'package:trex/features/exercise_screen.dart';
 import 'package:trex/features/home_screen.dart';
 import 'package:trex/features/profile_screen.dart';
+import 'package:trex/features/shop/shop_screen.dart';
+import 'package:trex/mocks/mock_screen.dart';
 
 class MyTabItem {
   MyTabItem({this.barItem, this.screen});
@@ -29,10 +31,10 @@ class AppBottomTab extends StatelessWidget {
     ),
     MyTabItem(
         barItem: BottomNavigationBarItem(
-          icon: Icon(Icons.fitness_center),
-          title: const Text('BMI et State'),
+          icon: Icon(Icons.shop),
+          title: Text(ShopScreen.title),
         ),
-        screen: ExerciseScreen()),
+        screen: MockScreen()),
     MyTabItem(
       barItem: BottomNavigationBarItem(
         icon: Icon(Icons.person),

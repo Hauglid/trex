@@ -11,14 +11,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  // _ProfileScreenState() {
-
-  // }
-
-  // FirebaseUser user;
-
-  // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(

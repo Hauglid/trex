@@ -23,14 +23,6 @@ class ExerciseScreen extends StatelessWidget {
   }
 }
 
-// OutlineButton(
-//   onPressed: () {
-//     Navigator.of(context)
-//         .push(CupertinoPageRoute(builder: (context) => MockScreen2()));
-//   },
-//   child: Text('Go to mock screen'),
-// ),
-
 class NrkTekniskFeil extends StatelessWidget {
   final String viBeklager = 'VI BEKLAGER';
   final String tekniskFeil = ' TEKNISK FEIL';

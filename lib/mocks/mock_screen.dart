@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:trex/core/app_router.dart';
 
 import 'mock_screen2.dart';
 
 class MockScreen extends StatelessWidget {
+  static Route<dynamic> route() {
+    return MaterialPageRoute<Widget>(
+      builder: (_) => MockScreen(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,21 +23,19 @@ class MockScreen extends StatelessWidget {
           children: <Widget>[
             OutlineButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                AppRouter.pop(context);
               },
               child: const Text('Back'),
             ),
             OutlineButton(
               onPressed: () {
-                Navigator.of(context).push<dynamic>(
-                    CupertinoPageRoute<dynamic>(builder: (BuildContext context) => MockScreen()));
+                AppRouter.push(context, MockScreen.route());
               },
               child: const Text('go deeper'),
             ),
             OutlineButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    CupertinoPageRoute<dynamic>(builder: (BuildContext context) => MockScreen2()));
+                AppRouter.push(context, MockScreen2.route());
               },
               child: const Text('go to end'),
             ),
