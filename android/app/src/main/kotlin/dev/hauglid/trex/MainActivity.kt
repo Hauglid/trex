@@ -1,4 +1,4 @@
-package com.example.trex
+package dev.hauglid.trex
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

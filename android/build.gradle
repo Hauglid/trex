@@ -34,5 +34,3 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-apply plugin: 'io.fabric'
-apply plugin: 'com.google.gms.google-services'
